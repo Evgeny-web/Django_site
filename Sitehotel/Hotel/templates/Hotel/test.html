@@ -1,0 +1,16 @@
+{% extends 'Hotel/base.html' %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<ul>
+    {% for r in rooms %}
+      {% if r.pk == category %}
+        <li><h3> {{ r.type }} </h3></li>
+      {% else %}
+        <li><h3><a href="{{ r.get_absolute_url }}"> {{ r.type }} </a></h3></li>
+      {% endif %}
+    {% endfor %}
+</ul>
+
+{% endblock content %}

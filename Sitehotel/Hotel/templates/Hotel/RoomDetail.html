@@ -1,0 +1,18 @@
+{% extends 'Hotel/base.html' %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+{% if room.photo %}
+    <p><img src="{{ room.photo.url }}"></p>
+{% endif %}
+<p>Описание: {{ room.description|linebreaks }}</p>
+<p>Площадь: {{ room.area }}</p>
+<p><strong>Цена: {{ room.price }}</strong></p>
+<p>Вместимость: {{ room.capacity }}</p>
+
+
+<p><strong><a href="{% url 'add_rent_room' pk=room.pk %}">Забронировать.</a></strong></p>
+
+
+{% endblock content %}

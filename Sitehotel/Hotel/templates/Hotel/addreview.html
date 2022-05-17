@@ -1,0 +1,28 @@
+{% extends 'Hotel/base.html' %}
+{% load Hotel_tags %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<form action="{% url 'addreview' %}" method="post">
+    {% csrf_token %}
+    <div class="">{{ form.non_field_errors }}</div>
+
+    <p><label class="" for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}: </label>{{ form.first_name }}</p>
+    <div class="">{{ form.first_name.errors }}</div>
+
+    <p><label class="" for="{{ form.surname.id_for_label }}">{{ form.surname.label }}: </label>{{ form.surname }}</p>
+    <div class="">{{ form.surname.errors }}</div>
+
+    <p><label class="" for="{{ form.grade.id_for_label }}">{{ form.grade.label }}: </label>{{ form.grade }}</p>
+    <div class="">{{ form.grade.errors }}</div>
+
+    <p><label class="" for="{{ form.text.id_for_label }}">{{ form.text.label }}: </label>{{ form.text }}</p>
+    <div class="">{{ form.text.errors }}</div>
+
+
+    <button type="submit">Добавить</button>
+</form>
+
+
+{% endblock content %}

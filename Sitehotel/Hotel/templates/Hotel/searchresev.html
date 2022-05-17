@@ -1,0 +1,16 @@
+{% extends 'Hotel/base.html' %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<form action="{% url 'searchresev' %}">
+    Введите ваш номер: <input type="search" placeholder="Number" name="search" >
+    <button type="submit">Search</button>
+</form>
+
+{% for res in resev %}
+    <p>{{res.first_name}} - {{res.surname}} - {{res.reservation_room}} - {{ res.arrival_date }} - {{ res.date_of_departure }}</p>
+    <a href="{% url 'rentroomdelete' pk=res.pk %}">Отменить броинрование</a>
+{% endfor%}
+
+{% endblock content %}

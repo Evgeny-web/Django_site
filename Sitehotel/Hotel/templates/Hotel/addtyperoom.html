@@ -1,0 +1,28 @@
+{% extends 'Hotel/base.html' %}
+{% load Hotel_tags %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<form action="{% url 'add_type_room' %}" method="post">
+    {% csrf_token %}
+    <div class="">{{ form.non_field_errors }}</div>
+    <!--{{ form.as_p }}
+        один из варианта использования (автоматический)-->
+
+    <!--РУчной вариант прописывания полей формы
+    <p><label class="" for="{{ form.type.id_for_label }}">{{ form.type.label }}: </label>{{ form.type }}</p>
+    <div class="">{{ form.type.errors }}</div>
+    -->
+
+    <!-- вариант прописывания полей формы c помощью цикла
+        f представляет из себя значения полей формы-->
+    {% for f in form %}
+        <p><label class="" for="{{ f.id_for_label }}">{{ f.label }}: </label>{{ f }}</p>
+        <div class="">{{ f.errors }}</div>
+    {% endfor %}
+    <button type="submit">Добавить</button>
+</form>
+
+
+{% endblock content %}

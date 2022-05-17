@@ -1,0 +1,26 @@
+{% extends 'Hotel/base.html' %}
+{% load Hotel_tags %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<form action="{% url 'searchroom' %}" method="get">
+    Введите название комнаты или вместительность: <input type="search" placeholder="name or capacity" name="s" >
+    <button type="submit">Search</button>
+</form>
+
+<ul>
+    {% for r in rooms %}
+    <li>
+        <h3><a href="{{ r.get_absolute_url }}"> {{ r.type }} </a></h3>
+        {% if r.photo %}
+        <p><img src="{{ r.photo.url }}"></p>
+        {% endif %}
+        <p>Описание: {{ r.description|truncatewords:30 }}</p>
+        <p><strong>Цена: {{ r.price }}</strong></p>
+        <p><a href="{{ r.get_absolute_url }}">Подробнее...</a></p> <br>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}

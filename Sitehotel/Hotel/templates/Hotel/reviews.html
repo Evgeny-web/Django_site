@@ -1,0 +1,28 @@
+{% extends 'Hotel/base.html' %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<p>
+    На этой странице можно почитать отзывы посетителей
+    об отеле и номерах. Можете тоже оставить свой отзыв.
+    Мы заботимся о своих клиентах и стараемся стать лучше,
+    обращаем внимание на вашу реакцию, как хорошую, так и плохую.
+</p>
+
+<button type="submit"><a href="{% url 'addreview' %}">Оставить отзыв</a></button>
+
+<ul>
+    {% for r in rev %}
+    <li>
+        <label>Имя: </label>{{ r.first_name }} <br>
+        <label>Фамилия: </label>{{ r.surname }} <br>
+        <label>Оценка: </label>{{ r.grade }} <br>
+        <label>Отзыв: </label>{{ r.text }} <br>
+        <label>Время: </label>{{ r.create_review_date }} <br>
+         <br>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
